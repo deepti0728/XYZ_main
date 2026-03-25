@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="180" height="80" viewBox="0 0 180 80" xmlns="http://www.w3.org/2000/svg">
+  <rect width="180" height="80" rx="16" fill="#fefefe" stroke="#e2e8f0" stroke-width="1.5"/>
+  <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="Segoe UI, sans-serif"
+    font-size="18" font-weight="700" fill="#0f172a">
+    Partner A
+  </text>
+</svg>
