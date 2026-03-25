@@ -6,6 +6,16 @@ function RobotsSection({ programs }) {
         <p className="robotics-intro">
           Explore our signature robot lineup designed for school labs, project showcases, and future-ready learning.
         </p>
+        <div className="robotics-cta">
+          <a
+            className="btn btn-primary"
+            href="https://frontend-part-liart.vercel.app/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Explore Full Robotics Catalog
+          </a>
+        </div>
       </div>
       <div className="robotics-grid">
         {programs.map((item) => (
