@@ -11,11 +11,12 @@ const getActiveNavKey = () => {
   if (normalizedPath === '/login') return 'login'
 
   if (normalizedPath === '/') {
+    if (normalizedHash === '' || normalizedHash === '#top') return ''
+    if (normalizedHash === '#features') return 'solutions'
     if (normalizedHash === '#achievements') return 'achievements'
     if (normalizedHash === '#testimonials') return 'testimonials'
     if (normalizedHash === '#school-access') return 'school'
     if (normalizedHash === '#about') return 'about'
-    return 'solutions'
   }
 
   return ''
@@ -29,7 +30,13 @@ const scrollSectionConfig = [
 
 const getScrollActiveNavKey = () => {
   const triggerPoint = window.scrollY + window.innerHeight * 0.35
-  let activeKey = 'solutions'
+  const firstSection = document.getElementById('features')
+
+  if (firstSection && triggerPoint < firstSection.offsetTop) {
+    return ''
+  }
+
+  let activeKey = ''
 
   scrollSectionConfig.forEach(({ id, key }) => {
     const section = document.getElementById(id)

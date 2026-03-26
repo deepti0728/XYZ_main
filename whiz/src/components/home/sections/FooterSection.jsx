@@ -2,11 +2,7 @@ const socialLinks = [
   {
     name: 'Facebook',
     href: 'https://www.facebook.com/whizrobo',
-    icon: (
-      <svg viewBox="0 0 24 24" role="presentation" focusable="false">
-        <path d="M13.545 21.86V13.87h3.09l.45-3.47h-3.54V7.24c0-1 0.28-1.69 1.73-1.69h1.85V2.47a25.3 25.3 0 0 0-2.75-.14c-2.72 0-4.58 1.66-4.58 4.72v2.64H8.28v3.47h2.86v7.99h2.38Z" />
-      </svg>
-    ),
+    icon: <span className="footer-social__glyph">f</span>,
   },
   {
     name: 'Instagram',
@@ -27,13 +23,9 @@ const socialLinks = [
     ),
   },
   {
-    name: 'WhatsApp',
-    href: 'https://wa.me/918968714000',
-    icon: (
-      <svg viewBox="0 0 24 24" role="presentation" focusable="false">
-        <path d="M17.472 14.425c-.297-.148-1.758-.867-2.031-.967-.273-.1-.472-.148-.672.149s-.771.967-.947 1.165c-.173.198-.348.223-.645.075-1.758-.867-2.908-1.544-4.073-3.494-.309-.532.309-.495.892-1.644.099-.225.05-.421-.025-.569-.075-.148-.672-1.612-.921-2.213-.243-.579-.49-.5-.672-.51-.173-.008-.372-.01-.571-.01s-.569.084-.868.41c-.297.297-1.135 1.11-1.135 2.707 0 1.597 1.161 3.145 1.322 3.36.173.223 2.288 3.49 5.545 4.894.776.333 1.379.531 1.849.68.776.249 1.482.214 2.041.13.623-.094 1.758-.719 2.007-1.414.248-.695.248-1.29.173-1.414-.074-.124-.272-.198-.572-.347Z" />
-      </svg>
-    ),
+    name: 'LinkedIn',
+    href: 'https://www.linkedin.com/company/whizrobo',
+    icon: <span className="footer-social__glyph footer-social__glyph--in">in</span>,
   },
 ]
 

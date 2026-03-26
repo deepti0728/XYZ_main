@@ -5,7 +5,7 @@ const leaderMessages = [
     image: '/images/dimplemam.png',
     align: 'left',
     quote:
-      'At Whizrobo, we are proud to be at the forefront of revolutionizing education by introducing cutting-edge Innovation Labs tailored specifically for K-12 schools. Our mission is to equip students with future-ready skills, empowering them to thrive in a rapidly evolving technological landscape through hands-on, experimental learning.',
+      'At Whizrobo, we are proud to be at the forefront of revolutionizing education by introducing cutting-edge Innovation Labs tailored specifically for K-12 schools. Our mission is to equip students with future-ready skills, empowering them to thrive in a rapidly evolving technological landscape through hands-on, experimental learning. we offer a comprehensive, end-to-end solution that includes STEM, Robotics, AI and access to WHIZFLIX- our LMS and Mobile app.',
   },
   {
     name: 'Lakshita Verma',
@@ -13,7 +13,7 @@ const leaderMessages = [
     image: '/images/lakshitamam.png',
     align: 'right',
     quote:
-      'It gives me immense pleasure to introduce WHIZROBO as a catalyst for educational transformation, where innovation meets purpose. As the Managing Director, I take pride in leading an organization that is deeply commited to redefing how students experience learning in the 21st century. At WHIZROBO, our core belief is that education must evolve with the times.',
+      'It gives me immense pleasure to introduce WHIZROBO as a catalyst for educational transformation, where innovation meets purpose. As the Managing Director, I take pride in leading an organization that is deeply commited to redefing how students experience learning in the 21st century. At WHIZROBO, our core belief is that education must evolve with the times. we provide a complete turnkey solution: a NEP-aligned curriculum, Robotics and AI Kits, teacher training programs.',
   },
 ]
 
@@ -21,15 +21,20 @@ function MdCeoMessageSection() {
   const handleImageFallback = (event) => {
     if (event.currentTarget.dataset.fallbackApplied) return
     event.currentTarget.dataset.fallbackApplied = 'true'
-    event.currentTarget.src = '/images/whizrobo.jpg'
+    event.currentTarget.src = '/images/whizrobo.png'
   }
 
   return (
     <section className="section leadership-message-section" id="leadership-message">
       <div className="leadership-format-grid">
         {leaderMessages.map((leader) => (
-          <article className="leadership-format-card" key={leader.name}>
-            <div className={`leadership-format-top leadership-format-top-${leader.align}`}>
+          <article className={`leadership-format-card leadership-format-card-${leader.align}`} key={leader.name}>
+            <div className="leadership-top-copy">
+              <h3>{leader.name}</h3>
+              <p>{leader.role}</p>
+              <span className="leadership-line" />
+            </div>
+            <div className="leadership-quote-box">
               <div className="leadership-image-wrap">
                 <img
                   className="leadership-main-image"
@@ -39,14 +44,6 @@ function MdCeoMessageSection() {
                   onError={handleImageFallback}
                 />
               </div>
-              <div className="leadership-top-copy">
-                <h3>{leader.name}</h3>
-                <p>{leader.role}</p>
-                <span className="leadership-line" />
-              </div>
-            </div>
-
-            <div className="leadership-quote-box">
               <span className="leadership-quote-mark">"</span>
               <p>{leader.quote}</p>
               <p className="leadership-quote-sign">- {leader.name}</p>

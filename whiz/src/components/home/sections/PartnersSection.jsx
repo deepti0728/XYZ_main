@@ -1,13 +1,15 @@
-const firstRowLogos = [
+import { useEffect, useRef, useState } from 'react'
+
+const governmentLogos = [
   '/images/partners/niti.png',
   '/images/partners/atal.png',
   '/images/partners/g20.png',
   '/images/partners/isro.png',
+  '/images/iso.png',
+  '/images/rohs.png',
+  '/images/qro.png',
   '/images/partners/pscst.png',
   '/images/partners/moef.png',
-]
-
-const secondRowLogos = [
   '/images/partners/green.png',
   '/images/partners/imp.png',
   '/images/partners/lifestyle.png',
@@ -53,18 +55,80 @@ const schoolLogos = [
   '/images/partners/wisdom.png',
 ]
 
-function MarqueeRow({ logos, label }) {
-  const duplicatedLogos = [...logos, ...logos]
+function LogoRow({ logos, label }) {
+  const trackRef = useRef(null)
+  const [canScrollLeft, setCanScrollLeft] = useState(false)
+  const [canScrollRight, setCanScrollRight] = useState(true)
+
+  const updateScrollState = () => {
+    const track = trackRef.current
+
+    if (!track) return
+
+    const { scrollLeft, scrollWidth, clientWidth } = track
+    setCanScrollLeft(scrollLeft > 0)
+    setCanScrollRight(scrollLeft + clientWidth < scrollWidth - 1)
+  }
+
+  useEffect(() => {
+    const track = trackRef.current
+
+    if (!track) return undefined
+
+    updateScrollState()
+    track.addEventListener('scroll', updateScrollState, { passive: true })
+    window.addEventListener('resize', updateScrollState)
+
+    return () => {
+      track.removeEventListener('scroll', updateScrollState)
+      window.removeEventListener('resize', updateScrollState)
+    }
+  }, [])
+
+  const scrollRow = (direction) => {
+    const track = trackRef.current
+
+    if (!track) return
+
+    const firstLogo = track.querySelector('.partner-logo')
+    const gap = 16
+    const scrollAmount = firstLogo ? firstLogo.clientWidth + gap : 180
+
+    track.scrollBy({
+      left: direction * scrollAmount,
+      behavior: 'smooth',
+    })
+
+    window.requestAnimationFrame(updateScrollState)
+  }
 
   return (
-    <div className="partners-marquee" aria-label={label}>
-      <div className="partners-marquee__track">
-        {duplicatedLogos.map((logo, index) => (
+    <div className="partners-row" aria-label={label}>
+      <button
+        type="button"
+        className={`feature-arrow partners-arrow${canScrollLeft ? '' : ' feature-arrow--disabled'}`}
+        aria-label="Scroll partners left"
+        onClick={() => scrollRow(-1)}
+        disabled={!canScrollLeft}
+      >
+        &#10094;
+      </button>
+      <div className="partners-row__track" ref={trackRef}>
+        {logos.map((logo, index) => (
           <figure className="partner-logo" key={`${label}-${index}`}>
             <img src={logo} alt={`${label}-${index}`} loading="lazy" />
           </figure>
         ))}
       </div>
+      <button
+        type="button"
+        className={`feature-arrow partners-arrow${canScrollRight ? '' : ' feature-arrow--disabled'}`}
+        aria-label="Scroll partners right"
+        onClick={() => scrollRow(1)}
+        disabled={!canScrollRight}
+      >
+        &#10095;
+      </button>
     </div>
   )
 }
@@ -79,16 +143,17 @@ function PartnersSection() {
         <p>Key Indian Government Partnerships</p>
         <span className="partners-head__line" aria-hidden="true" />
       </div>
-      <MarqueeRow logos={firstRowLogos} label="Government partners" />
-      <MarqueeRow logos={secondRowLogos} label="Government partners secondary" />
+      <LogoRow logos={governmentLogos} label="Government partners" />
       <div className="partners-head partners-head--secondary">
         <p>Key Institution / Corporate Partnerships</p>
+        <span className="partners-head__line" aria-hidden="true" />
       </div>
-      <MarqueeRow logos={corporateLogos} label="Institution corporate partners" />
+      <LogoRow logos={corporateLogos} label="Institution corporate partners" />
       <div className="partners-head partners-head--secondary">
         <p>Key School/Colleges Partnerships</p>
+        <span className="partners-head__line" aria-hidden="true" />
       </div>
-      <MarqueeRow logos={schoolLogos} label="School partners" />
+      <LogoRow logos={schoolLogos} label="School partners" />
     </section>
   )
 }

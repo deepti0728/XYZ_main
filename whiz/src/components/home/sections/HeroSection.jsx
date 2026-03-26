@@ -4,8 +4,8 @@ function HeroSection({ onBookDemoClick }) {
       <div className="hero-video-bg" aria-hidden="true">
         <video
           className="hero-video"
-          src="/videos/SIF 3.0 HD.mp4"
-          title="SIF 3.0 hero background video"
+          src="/videos/IBR%20Whizobo%20HD.mp4"
+          title="Whizrobo hero background video"
           autoPlay
           muted
           loop

@@ -17,11 +17,11 @@ export const solutions = [
   {
     title: 'Teacher Training Program',
     description: 'Empowering educators with modern tools and training to deliver effective tech-driven education.',
-    image: '/images/teacher-stem.png',
+    image: '/images/teacher_training.png',
   },
   {
     title: 'AI and IoT Learning Platform',
-    description: 'A digital platform for learning, practicing and building projects in AI and IoT anytime, anywhere.',
+    description: 'A digital Whiz Studio platform for learning, practicing and building projects in AI and IoT anytime, anywhere.',
     image: '/images/platform.png',
   },
   {
@@ -246,14 +246,14 @@ export const programCatalog = [
   },
   {
     group: 'Innovative Technology',
-    name: 'WHIZ IoT',
+    name: 'WHIZ IOT',
     description: 'Internet of Things kit for designing smart and connected solutions such as smart homes, automated farms and industrial sensor systems.',
     idealFor: 'Grades 10-12',
     highlights: ['IoT curriculum modules', 'Hands-on digital transformation projects'],
   },
   {
     group: 'Innovative Technology',
-    name: 'WHIZ BLUETOOTH ',
+    name: 'WHIZ BLUETOOTH',
     description: 'Bluetooth-enabled robotics kit for wireless communication projects, remote control robots and connected experiments.',
     idealFor: 'Grades 10-12',
     highlights: ['Mobile robotics use cases', 'Smart technology clubs'],

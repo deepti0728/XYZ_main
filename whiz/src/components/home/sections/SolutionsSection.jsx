@@ -1,7 +1,34 @@
-import { useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 function SolutionsSection({ solutions }) {
   const trackRef = useRef(null)
+  const [canScrollLeft, setCanScrollLeft] = useState(false)
+  const [canScrollRight, setCanScrollRight] = useState(true)
+
+  const updateScrollState = () => {
+    const track = trackRef.current
+
+    if (!track) return
+
+    const { scrollLeft, scrollWidth, clientWidth } = track
+    setCanScrollLeft(scrollLeft > 0)
+    setCanScrollRight(scrollLeft + clientWidth < scrollWidth - 1)
+  }
+
+  useEffect(() => {
+    const track = trackRef.current
+
+    if (!track) return undefined
+
+    updateScrollState()
+    track.addEventListener('scroll', updateScrollState, { passive: true })
+    window.addEventListener('resize', updateScrollState)
+
+    return () => {
+      track.removeEventListener('scroll', updateScrollState)
+      window.removeEventListener('resize', updateScrollState)
+    }
+  }, [])
 
   const scrollCards = (direction) => {
     const track = trackRef.current
@@ -16,6 +43,8 @@ function SolutionsSection({ solutions }) {
       left: direction * scrollAmount,
       behavior: 'smooth',
     })
+
+    window.requestAnimationFrame(updateScrollState)
   }
 
   return (
@@ -26,9 +55,10 @@ function SolutionsSection({ solutions }) {
       <div className="feature-slider">
         <button
           type="button"
-          className="feature-arrow feature-arrow-left"
+          className={`feature-arrow feature-arrow-left${canScrollLeft ? '' : ' feature-arrow--disabled'}`}
           aria-label="View previous solution"
           onClick={() => scrollCards(-1)}
+          disabled={!canScrollLeft}
         >
           &#10094;
         </button>
@@ -46,9 +76,10 @@ function SolutionsSection({ solutions }) {
         </div>
         <button
           type="button"
-          className="feature-arrow feature-arrow-right"
+          className={`feature-arrow feature-arrow-right${canScrollRight ? '' : ' feature-arrow--disabled'}`}
           aria-label="View next solution"
           onClick={() => scrollCards(1)}
+          disabled={!canScrollRight}
         >
           &#10095;
         </button>

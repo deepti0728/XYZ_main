@@ -10,8 +10,8 @@ function KitsPage() {
   const [isDemoOpen, setIsDemoOpen] = useState(false)
   const educationalKits = programCatalog.filter((item) =>
     item.group === 'Whizrobo Educational Kits' ||
-    item.name === 'WHIZ IoT' ||
-    item.name === 'WHIZ BLUETOOTH KIT'
+    item.name === 'WHIZ IOT' ||
+    item.name === 'WHIZ BLUETOOTH'
   )
 
   function handleDemoSubmit(event) {

@@ -32,11 +32,26 @@ function Home() {
       section.scrollIntoView({ behavior: 'smooth', block: 'start' })
     }
 
-    const initialScrollTimer = window.setTimeout(scrollToHashTarget, 80)
+    const navigationEntry = window.performance?.getEntriesByType?.('navigation')?.[0]
+    const isReload = navigationEntry?.type === 'reload' || window.performance?.navigation?.type === 1
+    const initialHash = window.location.hash
+    let initialScrollTimer
+
+    if (initialHash) {
+      if (isReload) {
+        window.history.replaceState(null, '', window.location.pathname + window.location.search)
+        window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
+      } else {
+        initialScrollTimer = window.setTimeout(scrollToHashTarget, 80)
+      }
+    }
+
     window.addEventListener('hashchange', scrollToHashTarget)
 
     return () => {
-      window.clearTimeout(initialScrollTimer)
+      if (initialScrollTimer) {
+        window.clearTimeout(initialScrollTimer)
+      }
       window.removeEventListener('hashchange', scrollToHashTarget)
     }
   }, [])

@@ -4,15 +4,15 @@ const kitImageByName = {
   'WHIZ BOX': '/images/Whizbox.png',
   'WHIZ INNOVATOR': '/images/Whizinnovator.png',
   'WHIZ INVENTOR': '/images/Whizinventor.png',
-  'WHIZ IoT': '/images/Whiziot.png',
-  'WHIZ BLUETOOTH KIT': '/images/Whizblue.png',
+  'WHIZ IOT': '/images/Whiziot.png',
+  'WHIZ BLUETOOTH': '/images/Whizblue.png',
 }
 
 function KitsSection({ kits }) {
   return (
     <>
       <div className="section-head">
-        <h2>WHIZROBO Educational Kits</h2>
+        <h2>WHIZROBO Robotics Kits</h2>
       </div>
       <div className="programs-track">
         {kits.map((item, index) => (
@@ -32,7 +32,7 @@ function KitsSection({ kits }) {
             </ul>
             <p className="program-outcome">{`Ideal for ${item.idealFor}`}</p>
             <div className="kit-card-actions">
-              <button type="button" className="btn kit-btn kit-btn-primary">View Tutorials</button>
+              <button type="button" className="btn kit-btn kit-btn-primary">LMS</button>
               <button type="button" className="btn kit-btn kit-btn-secondary">View Program</button>
             </div>
           </article>

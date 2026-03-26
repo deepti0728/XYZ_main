@@ -6,7 +6,7 @@ function AboutSection() {
       </div>
       <article className="about-simple-card">
         <div className="about-simple-media">
-          <img src="/images/whizrobo.jpg" alt="Whizrobo About" loading="lazy" />
+          <img src="/images/whizrobo.png" alt="Whizrobo About" loading="lazy" />
         </div>
         <div className="about-simple-content">
           <p className="about-kicker">About Whizrobo</p>
