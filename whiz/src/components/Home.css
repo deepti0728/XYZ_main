@@ -124,35 +124,14 @@ button {
   transition: color 180ms ease, background-color 180ms ease;
 }
 
-.topbar nav a::after {
-  content: '';
-  position: absolute;
-  left: 0.85rem;
-  right: 0.85rem;
-  bottom: 0.3rem;
-  height: 2px;
-  background: linear-gradient(90deg, #fb923c, #ea580c);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 180ms ease;
-}
-
 .topbar nav a:hover {
   color: #ea580c;
   background: #fff7ed;
 }
 
-.topbar nav a:hover::after {
-  transform: scaleX(1);
-}
-
 .topbar nav a.active {
   color: #ea580c;
   background: #fff7ed;
-}
-
-.topbar nav a.active::after {
-  transform: scaleX(1);
 }
 
 .nav-login {
@@ -1741,6 +1720,11 @@ button {
   transform-origin: center;
 }
 
+.partner-logo img[src$="moef.png"] {
+  transform: scale(1.2);
+  transform-origin: center;
+}
+
 
 
 .partner-logo--spacer {
@@ -2218,11 +2202,17 @@ button {
 }
 
 .demo-form input,
-.demo-form select {
+.demo-form select,
+.demo-form textarea {
   border: 1px solid #cbd5e1;
   border-radius: 10px;
   padding: 0.62rem 0.72rem;
   font: inherit;
+}
+
+.demo-form textarea {
+  min-height: 120px;
+  resize: vertical;
 }
 
 .demo-form button {

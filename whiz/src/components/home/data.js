@@ -2,7 +2,7 @@ export const solutions = [
   {
     title: 'Innovation Labs',
     description: 'Future-ready labs that promote hands-on learning, creativity and innovation through real-world tech experiences.',
-    image: '/images/labs.jpg',
+    image: '/images/Lab.png',
   },
   {
     title: 'Robotics Kits',
@@ -193,17 +193,14 @@ export const blogPosts = [
 export const testimonials = [
   {
     role: 'Principal',
-    name: 'Rajesh Nair',
-    feedback: 'Whizrobo improved our STEM outcomes and gave our school a structured robot program with measurable impact.',
+    feedback: 'Whizrobo improved our STEM outcomes and gave our school a structured robotics program with measurable impact.',
   },
   {
     role: 'Teacher',
-    name: 'Sneha Verma',
     feedback: 'The lesson flow is practical and clear. Students stay engaged because they learn by building real systems.',
   },
   {
     role: 'Student',
-    name: 'Aarav Mehta',
     feedback: 'I built my first autonomous robot in class and presented it confidently to everyone. I feel more creative and excited to learn technology.',
   },
 ]

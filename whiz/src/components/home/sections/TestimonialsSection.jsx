@@ -9,7 +9,6 @@ function TestimonialsSection({ testimonials }) {
           <article className="testimonial-card" key={item.role}>
             <p className="testimonial-role">{item.role}</p>
             <p className="testimonial-feedback">{item.feedback}</p>
-            <h3>{item.name}</h3>
           </article>
         ))}
       </div>
